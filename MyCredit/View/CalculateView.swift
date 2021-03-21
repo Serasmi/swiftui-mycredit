@@ -81,13 +81,17 @@ struct CalculateView: View {
                 }
             }
             .navigationTitle("My credit")
-            .toolbar(content: {
-                Button(action: {
+            .navigationBarItems(
+                leading: Button(action: {
+                    UIApplication.shared.endEditing()
+                }, label: {
+                    Image(systemName: "checkmark")
+                }),
+                trailing: Button(action: {
                     showSavingSheet = true
                 }, label: {
                     Text("Save")
-                })
-            })
+                }))
         }
         .alert(isPresented: $showAlert, content: {
             Alert(title: Text("Saved successfully"))
